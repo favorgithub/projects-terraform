@@ -3,14 +3,12 @@ provider "aws" {
 }
 
 resource "aws_vpc" "main" {
-  cidr_block = "172.16.0.0/16"
+  cidr_block       = "172.16.0.0/16"
   instance_tenancy = "default"
-  tags = {
+  tags             = {
     Name = "main"
   }
 }
-
-
 #Create security group with firewall rules
 resource "aws_security_group" "jenkins-sg-2025" {
   name        = var.security_group
