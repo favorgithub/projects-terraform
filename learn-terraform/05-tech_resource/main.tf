@@ -10,6 +10,6 @@ resource "aws_vpc" "development_vpc" {
 resource "aws_subnet" "dev_subnet" {
    vpc_id = aws_vpc.development_vpc.id
    cidr_block = "10.0.10.0/24"
-  availability_zone = "us-east-1"
+  availability_zone = "us-east-1a"
 
 }
