@@ -5,7 +5,8 @@ provider "aws" {
 resource "aws_vpc" "development_vpc" {
    cidr_block = "10.0.0.0/16"
    tags = {
-     Name: "development"
+     Name: "development",
+     vpc_env: "dev"
    }
 }
 resource "aws_subnet" "dev_subnet" {
@@ -14,7 +15,7 @@ resource "aws_subnet" "dev_subnet" {
   availability_zone = "us-east-1a"
   tags = {
     Name: "subnet-dev"
-    vpc_env: "dev"
+
   }
 
 }
