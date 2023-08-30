@@ -13,3 +13,15 @@ resource "aws_subnet" "dev_subnet" {
   availability_zone = "us-east-1a"
 
 }
+
+data "aws_vpc" "existing_vpc" {
+  default = true
+
+}
+
+resource "aws_subnet" "dev-subnet-1" {
+  vpc_id = data.aws_vpc.existing_vpc.id
+  cidr_block = "172.16.32.0/16"
+  availability_zone = "us-east-1a"
+}
+
