@@ -35,10 +35,9 @@ resource "aws_instance" "web2" {
     Name = element(var.instances, count.index)
 
   }
-
-variable "instances"
-  default =  ["sql", "dynamo", "mongodb"]
-
+}
+variable "instances" {
+ default = ["sql", "mongo", "redis"]
 }
 
 
