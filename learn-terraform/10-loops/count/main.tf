@@ -12,17 +12,33 @@ provider "aws" {
 #    Name = "Terraform ec2"
 #  }
 
+#
+#resource "aws_instance" "web2" {
+#  count         = length(var.instances)
+#  ami           = "ami-053b0d53c279acc90"
+#  instance_type = "t3.micro"
+#
+#  tags = {
+#    Name = element(var.instances, count.index)
+#  }
+#}
+#variable "instances" {
+#  default = ["frontend", "catalogue", "cart"]
+#}
 
 resource "aws_instance" "web2" {
-  count         = length(var.instances)
   ami           = "ami-053b0d53c279acc90"
-  instance_type = "t3.micro"
+  instance_type = "t2.micro"
+  count         = length(var.instances)
 
-  tags = {
+  Tags = {
     Name = element(var.instances, count.index)
+
   }
+
+variable "instances"
+  default =  ["sql", "dynamo", "mongodb"]
+
 }
-variable "instances" {
-  default = ["frontend", "catalogue", "cart"]
-}
+
 
