@@ -31,7 +31,7 @@ resource "aws_instance" "web2" {
   instance_type = "t2.micro"
   count         = length(var.instances)
 
-  Tags = {
+  tags = {
     Name = element(var.instances, count.index)
 
   }
