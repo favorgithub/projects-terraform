@@ -13,17 +13,16 @@ resource "aws_instance" "web" {
   }
 
 }
+resource "aws_instance" "web2" {
+  count         = length(var.instances)
+  ami           = "ami-053b0d53c279acc90"
+  instance_type = "t3.micro"
 
-resource "aws_iam_user" "example" {
-  count = length(var.user_names)
-  name = var.user_names[count.index]
-
-
+  tags = {
+    Name = element(var.instances, count.index)
+  }
+}
+variable "instances" {
+  default = ["frontend", "catalogue", "cart"]
 }
 
-variable "user_names" {
-  description = "IAM usernames"
-  type = list(string)
-  default = ["user1", "user2", "user3"]
-
-}
